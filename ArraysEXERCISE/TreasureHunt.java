@@ -33,8 +33,8 @@ public class TreasureHunt {
 
 
 
-
             command = scanner.nextLine();
+
         }
 
     }
