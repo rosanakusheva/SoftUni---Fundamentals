@@ -42,9 +42,7 @@ public class ArrayModifier {
 
                 }
 
-
             }
-
 
             command = scanner.nextLine();
         }
