@@ -46,3 +46,21 @@ public class MergingLists {
                 .replace(",", ""));
     }
 }
+// int minSize = Math.min(firstList.size(), secondList.size());
+//        for (int i = 0; i < minSize; i++) {
+//            int firstItem = firstList.get(i);
+//            int secondItem = secondList.get(i);
+//
+//            resultList.add(firstItem);
+//            resultList.add(secondItem);
+//        }
+//
+//        if (first.size() > secondList.size()) {
+//            result.addAll(firstList.subList(minSize, firstList.size()));
+//        } else {
+//            result.addAll(secondList.subList(minSize, secondList.size()));
+//        }
+//
+//        System.out.println(result.toString().replaceAll("[\\[\\],]", ""));
+//    }
+//}
