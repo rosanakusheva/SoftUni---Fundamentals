@@ -62,7 +62,7 @@ public class CoursePlanning {
                     }
                     break;
                 case "Exercise":
-                  
+
                     String exercise = lessonTitle + "-Exercise";
 
                     int indexLessonTitle = schedule.indexOf(lessonTitle);
