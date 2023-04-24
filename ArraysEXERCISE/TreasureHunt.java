@@ -1,40 +1,77 @@
 package ArraysEXERCISE;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class TreasureHunt {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String[] loot = scanner.nextLine().split("\\|");
+        String[] lootChestArr = scanner.nextLine().split("\\|");
+        List<String> chestList = new LinkedList<>(Arrays.asList(lootChestArr));
 
-        String command =scanner.nextLine();
-        while (!command.equals("Yohoho!")){
-            String[] commandParts = command.split(" ");
-            String commandName = commandParts[0];
+        List<String> commandList = Arrays.asList(scanner.nextLine().split(" "));
 
-            switch (commandName){
+        while (!"Yohoho!".equals(commandList.get(0))) {
+            // String[] commandParts = input.split(" ");
+            // String commandName = commandParts[0];
+
+            String commandName = commandList.get(0);
+
+            switch (commandName) {
                 case "Loot":
-                    break;
-                case "Drop":
-                    int dropIndex = Integer.parseInt(commandParts[1]);
-                    if (dropIndex < 0 || dropIndex >= loot.length){
-                        break;
-                    }else {
-                        String currentLoot = loot[dropIndex];
-                        for (int leftIndex = dropIndex; leftIndex < loot.length - 1; leftIndex++) {
-                            loot[leftIndex] = loot[leftIndex + 1];
+                    List<String> loots = commandList.subList(1, commandList.size());
+
+                    for (String item : loots) {
+                        if (!chestList.contains(item)) {
+                            chestList.add(0, item);
                         }
-                        loot[loot.length - 1] = currentLoot;
                     }
                     break;
+                case "Drop":
+                    int index = Integer.parseInt(commandList.get(1));
+
+                    if (index >= 0 && index < chestList.size()){
+                        String removedItem = chestList.get(index);
+                        chestList.remove(removedItem);
+                        chestList.add(removedItem);
+                    }
+
+                        break;
                 case "Steal":
+                    int count = Integer.parseInt(commandList.get(1));
+                    int result = chestList.size() - count;
+                    List<String> stolenItems = new ArrayList<>();
+                    if (result >= 0){
+                        for (int i = result; i < chestList.size(); i++) {
+                            String item = chestList.remove(i--);
+                            stolenItems.add(item);
+
+                        }
+                    } else {
+                        for (int i = 0; i < chestList.size(); i++) {
+                            String item = chestList.remove(i--);
+                            stolenItems.add(item);
+                        }
+                    }
+
+                    System.out.println(String.join(", ", stolenItems));
                     break;
             }
 
 
+            commandList = Arrays.asList(scanner.nextLine().split(" "));
 
-            command = scanner.nextLine();
+        }
 
+        if (chestList.isEmpty()){
+            System.out.println("Failed treasure hunt.");
+        }else {
+            double sum = 0;
+            for (String element : chestList){
+                sum += element.length();
+
+            }
+            double avgGain = sum / chestList.size();
+            System.out.printf("Average treasure gain: %.2f pirate credits.%n", avgGain);
         }
 
     }
