@@ -39,7 +39,7 @@ public class TheLift {
             System.out.print(element + " ");
         }
 
-//       
+//
 //
 //        int peopleWait = Integer.parseInt(scanner.nextLine()); //15
 //        int [] wagons = Arrays.stream(scanner.nextLine().split("\\s+"))
