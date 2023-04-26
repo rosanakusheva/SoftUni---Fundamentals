@@ -27,6 +27,6 @@ public class BombNumbers {
 
             }
         }
-        //System.out.println(elements.stream().mapToInt(Integer::parseInt).sum());
+        System.out.println(elements.stream().mapToInt(Integer::intValue).sum());
     }
 }
