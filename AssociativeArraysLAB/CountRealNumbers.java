@@ -1,5 +1,6 @@
 package AssociativeArraysLAB;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
@@ -23,7 +24,9 @@ public class CountRealNumbers {
         }
 
         for (Map.Entry<Double, Integer> entry : countMap.entrySet()) {
-            System.out.printf("%.0f -> %d%n", entry.getKey(), entry.getValue());
+            DecimalFormat df = new DecimalFormat("#.######");
+            double num = entry.getKey();
+            System.out.printf("%s -> %d%n", df.format(num), entry.getValue());
         }
 
     }
