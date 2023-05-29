@@ -22,7 +22,7 @@ public class StudentAcademy {
         }
         Map<String, Double> studentAverageGrade = new LinkedHashMap<>();
         for (Map.Entry<String, List<Double>> entry : studentsMap.entrySet()) {
-            //entry -> име (String) + списък с оценки (list<double>)
+
             String studentName = entry.getKey();
             List<Double> grades = entry.getValue();
             double averageGrade = getAverageGrade(grades);
@@ -30,7 +30,7 @@ public class StudentAcademy {
                 studentAverageGrade.put(studentName, averageGrade);
             }
         }
-        //разменяме записите ако на втория оценката > оценката на първия
+
         studentAverageGrade.entrySet()
                 .forEach(entry -> System.out.printf("%s -> %.2f%n", entry.getKey(), entry.getValue()));
 
