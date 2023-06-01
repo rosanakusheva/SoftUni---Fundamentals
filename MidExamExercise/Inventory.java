@@ -40,7 +40,7 @@ public class Inventory {
 
             } else if (command.contains("Renew")) {
                 if (items.contains(item)){
-                   int index = items.indexOf(item);
+//                   int index = items.indexOf(item);
                    items.remove(item);
                    items.add(item);
                 }
