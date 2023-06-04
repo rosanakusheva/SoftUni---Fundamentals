@@ -20,10 +20,17 @@ public class RepeatStrings {
         System.out.println(String.join("",repeatList));
     }
     public static String repeatString (int n, String word){
-        String result = "";
-        for (int i = 0; i < n; i++) {
-         result = result + word;
+        String[] arr = new String[n];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = word;
         }
-        return result;
+        return String.join("", arr);
+
+
+//        String result = "";
+//        for (int i = 0; i < n; i++) {
+//         result = result + word;
+//        }
+//        return result;
     }
 }
