@@ -1,39 +1,41 @@
+package FinalExamEXERCISE;
+
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class SecretChat {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
+        String hiddenMessage = scanner.nextLine();
 
-        String[] task = scanner.nextLine().split(":\\|:");
+        String[] command = scanner.nextLine().split(":\\|:");
 
-        while (!task[0].equals("Reveal")) {
+        while (!command[0].equals("Reveal")) {
 
-            switch (task[0]) {
+            switch (command[0]) {
                 case ("ChangeAll"):
-                    input = input.replace(task[1], task[2]);
-                    System.out.println(input);
+                    hiddenMessage = hiddenMessage.replace(command[1], command[2]);
+                    System.out.println(hiddenMessage);
                     break;
                 case ("InsertSpace"):
-                    int spaceNum = Integer.parseInt(task[1]);
-                    input = input.substring(0, spaceNum) + " " + input.substring(spaceNum, input.length());
-                    System.out.println(input);
+                    int spaceNum = Integer.parseInt(command[1]);
+                    hiddenMessage = hiddenMessage.substring(0, spaceNum) + " " + hiddenMessage.substring(spaceNum, hiddenMessage.length());
+                    System.out.println(hiddenMessage);
                     break;
                 case ("Reverse"):
-                    String forCheck = task[1];
-                    if (input.contains(forCheck)) {
-                        String forReplays = new StringBuilder(forCheck).reverse().toString();
-                        input = input.replaceFirst(Pattern.quote(forCheck), "") + forReplays;
-                        System.out.println(input);
+                    String forCheck = command[1];
+                    if (hiddenMessage.contains(forCheck)) {
+                        String reversed = new StringBuilder(forCheck).reverse().toString();
+                        hiddenMessage = hiddenMessage.replaceFirst(Pattern.quote(forCheck), "") + reversed;
+                        System.out.println(hiddenMessage);
                     } else {
                         System.out.println("error");
                     }
                     break;
             }
-            task = scanner.nextLine().split(":\\|:");
+            command = scanner.nextLine().split(":\\|:");
         }
-        System.out.printf("You have a new text message: %s", input);
+        System.out.printf("You have a new text message: %s", hiddenMessage);
 
     }
 }
